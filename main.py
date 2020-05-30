@@ -7,6 +7,29 @@ import os
 import shutil
 import time
 
+ENV_SIZE = 40
+lr = 0.1
+DISCOUNT = 0.95
+EPISODES = 60000
+STATS_EVERY = 50
+SHOW_EVERY = 10000
+
+USE_EPSILON_DECAY = True
+
+epsilon = 0.5
+START_EPSILON_DECAYING = 1
+END_EPSILON_DECAYING = EPISODES // 2
+
+model_name = f'LR: {lr} - DISCOUNT: {DISCOUNT} -' \
+             f' EPISODES: {EPISODES} - Use epsilon Decay: {USE_EPSILON_DECAY} -' \
+             f' EPSILON: {epsilon}'
+optimal_q_table = None
+
+epsilon_decaying_value = epsilon // (END_EPSILON_DECAYING - START_EPSILON_DECAYING)
+
+ep_rewards = []
+aggr_ep_rewards = {'ep': [], 'avg': [], 'min': [], 'max': []}
+
 
 def save_frames_as_gif(frames, path='./gifs/', filename='gym_animation.gif'):
     """
@@ -26,57 +49,32 @@ def save_frames_as_gif(frames, path='./gifs/', filename='gym_animation.gif'):
     return
 
 
-env = gym.make("MountainCar-v0")
-
-lr = 0.1
-DISCOUNT = 0.95
-EPISODES = 1000
-
-STATS_EVERY = 50
-SHOW_EVERY = 500
-
-USE_EPSILON_DECAY = True
-epsilon = 0.5
-START_EPSILON_DECAYING = 1
-END_EPSILON_DECAYING = EPISODES // 2
-
-model_name = f'LR: {lr} - DISCOUNT: {DISCOUNT} -' \
-            f' EPISODES: {EPISODES} - Use epsilon Decay: {USE_EPSILON_DECAY} -' \
-            f' EPSILON: {epsilon}'
-optimal_q_table = None
-
-epsilon_decaying_value = epsilon // (END_EPSILON_DECAYING - START_EPSILON_DECAYING)
-
-
 def get_discrete_state(state):
     discrete_state = (state - env.observation_space.low) / DISCRETE_os_win_size
     return tuple(discrete_state.astype(np.int))
 
 
-if __name__ == '__main__':
+def initialize_directories():
     """
-    Creates new directory in ./q_tables/
+    Creates new directory in ./q_tables/ and ./models/
     """
     os.mkdir(f'./q_tables/{model_name}')
     os.mkdir(f'./models/{model_name}')
+    return
 
+
+def initialize_qtable(ENV_SIZE):
     """
     Initializing the Q_Table, A 20 by 20 matrix with depth of env.action_space.n (In this case 3)
     0 for going backward, 1 for staying and 2 for going forward
     """
-    DISCRETE_OS_SIZE = [20] * len(env.observation_space.high)
+    DISCRETE_OS_SIZE = [ENV_SIZE] * len(env.observation_space.high)
     DISCRETE_os_win_size = (env.observation_space.high - env.observation_space.low) / DISCRETE_OS_SIZE
     q_table = np.random.uniform(low=-2, high=0, size=(DISCRETE_OS_SIZE + [env.action_space.n]))
+    return DISCRETE_OS_SIZE, DISCRETE_os_win_size, q_table
 
-    ep_rewards = []
-    aggr_ep_rewards = {'ep': [], 'avg': [], 'min': [], 'max': []}
 
-    """
-    Frames list captures the frames of the successful car episode,
-    and the save_frames_as_gif() will convert it to gif.
-    """
-    frames = []
-
+def train_model(EPISODES, epsilon):
     """
     Iterating over EPISODES to optimize the Q_table by using 'Bellman equation'
     as a simple value iteration update.
@@ -95,10 +93,8 @@ if __name__ == '__main__':
             new_discrete_state = get_discrete_state(new_state)
 
             if episode % SHOW_EVERY == 0:
-                """
                 # TODO: Uncomment below to capture frames.
-                """
-                # frames.append(env.render(mode="rgb_array"))
+                frames.append(env.render(mode="rgb_array"))
                 env.render()
                 """Feel free to change the sleep time if the car is too slow or too fast for you."""
                 time.sleep(0.02)
@@ -133,17 +129,33 @@ if __name__ == '__main__':
 
             print(f'Episode: {episode} avg: {average_reward} max: {max_reward} min: {min_reward}')
 
-        """
-        Saving Q-Tables for each SHOW_EVERY
-        """
-        if episode % STATS_EVERY == 0:
-            np.save(f'./q_tables/{model_name}/{episode}-qtable.npy', q_table)
+        save_qtable(episode)
     """
     Uncomment to save the frames as gif.
     """
-    # save_frames_as_gif(frames, filename="test.gif")
+
+    save_frames_as_gif(frames, filename=f"{model_name}.gif")
+
     env.close()
 
+    find_and_copy_optimal_qtable()
+
+    plot_plt()
+
+    graph = Graph(q_table=q_table, save_plot_path=f'./graphs/{model_name}.png', save_plot=True)
+    graph.plot()
+
+
+def save_qtable(episode):
+    """
+    Saving Q-Tables for each SHOW_EVERY
+    """
+    if episode % STATS_EVERY == 0:
+        np.save(f'./q_tables/{model_name}/{episode}-qtable.npy', q_table)
+    return
+
+
+def find_and_copy_optimal_qtable():
     """
     Select the q_table that produced maximum average and chose it as optimal_q_table
     """
@@ -152,7 +164,10 @@ if __name__ == '__main__':
     optimal_episode = aggr_ep_rewards.get('ep')[optimal_episode_idx]
     shutil.copyfile(f'./q_tables/{model_name}/{optimal_episode}-qtable.npy',
                     f'./models/{model_name}/{optimal_episode}-qtable.npy')
+    return
 
+
+def plot_plt():
     """
     Let's plot the captured episodic activities.
     """
@@ -166,6 +181,22 @@ if __name__ == '__main__':
     plt.ylabel('Reward')
     plt.savefig(plt_path)
     plt.show()
+    return
 
-    graph = Graph(q_table=q_table, save_plot_path=f'./graphs/{model_name}.png', save_plot=True)
-    graph.plot()
+
+if __name__ == '__main__':
+    env = gym.make("MountainCar-v0")
+
+    initialize_directories()
+
+    DISCRETE_OS_SIZE, DISCRETE_os_win_size, q_table = initialize_qtable(ENV_SIZE)
+
+    """
+    Frames list captures the frames of the successful car episode, and the save_frames_as_gif() will convert it to gif.
+    """
+    frames = []
+
+    """
+    Try loading specific Q table or train the initialized one.
+    """
+    train_model(EPISODES, epsilon)

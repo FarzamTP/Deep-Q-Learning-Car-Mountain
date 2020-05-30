@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from matplotlib import style
 
 
 class Graph:
@@ -7,8 +6,6 @@ class Graph:
         self.q_table = q_table
         self.save_plot_path = save_plot_path
         self.save_plot = save_plot
-
-    # style.use('ggplot')
 
     def get_q_color(self, value, vals):
         if value == max(vals):

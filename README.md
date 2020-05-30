@@ -9,6 +9,10 @@ Here we use the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equatio
 ![initial q_table status](./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 Initial Q table status
 
+![final q table status](./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+Final Status
+
+
 #### Result (Phase one)
 ##### Not Using Epsilon Decay
 ![phase one gif](./gifs/phase_one.gif)
@@ -33,6 +37,8 @@ LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0
 
 LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5
 
+
+![Final gif](./gifs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.gif)
 
 ### How to use:
 First clone the repository:
