@@ -29,10 +29,10 @@ env = gym.make("MountainCar-v0")
 
 lr = 0.1
 DISCOUNT = 0.95
-EPISODES = 20000
+EPISODES = 2000
 
 STATS_EVERY = 100
-SHOW_EVERY = 5000
+SHOW_EVERY = 1000
 SAVE_MODEL_EACH = 100
 
 USE_EPSILON_DECAY = True
@@ -43,6 +43,7 @@ END_EPSILON_DECAYING = EPISODES // 2
 model_name = f'LR: {lr} - DISCOUNT: {DISCOUNT} -' \
             f' EPISODES: {EPISODES} - Use epsilon Decay: {USE_EPSILON_DECAY} -' \
             f' EPSILON: {epsilon}'
+optimal_q_table = None
 
 epsilon_decaying_value = epsilon // (END_EPSILON_DECAYING - START_EPSILON_DECAYING)
 
@@ -57,6 +58,7 @@ if __name__ == '__main__':
     Creates new directory in ./q_tables/
     """
     os.mkdir(f'./q_tables/{model_name}')
+    os.mkdir(f'./models/{model_name}')
 
     """
     Initializing the Q_Table, A 20 by 20 matrix with depth of env.action_space.n (In this case 3)
@@ -143,9 +145,18 @@ if __name__ == '__main__':
     env.close()
 
     """
+    Select the q_table that produced maximum average and chose it as optimal_q_table
+    """
+    maximum_average = max(aggr_ep_rewards.get('avg'))
+    optimal_episode_idx = aggr_ep_rewards.get('avg').index(maximum_average)
+    optimal_episode = aggr_ep_rewards.get('ep')[optimal_episode_idx]
+    shutil.copyfile(f'./q_tables/{model_name}/{optimal_episode}-qtable.npy',
+                    f'./models/{model_name}/{optimal_episode}-qtable.npy')
+
+    """
     Let's plot the captured episodic activities.
     """
-    plt_path = f'{model_name}.png'
+    plt_path = f'./plots/{model_name}.png'
 
     plt.plot(aggr_ep_rewards.get('ep'), aggr_ep_rewards.get('avg'), label="avg rewards")
     plt.plot(aggr_ep_rewards.get('ep'), aggr_ep_rewards.get('min'), label="min rewards")
