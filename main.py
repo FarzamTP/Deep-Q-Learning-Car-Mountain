@@ -29,15 +29,20 @@ env = gym.make("MountainCar-v0")
 
 lr = 0.1
 DISCOUNT = 0.95
-EPISODES = 50000
+EPISODES = 20000
 
-SHOW_EVERY = 200
+STATS_EVERY = 100
+SHOW_EVERY = 5000
 SAVE_MODEL_EACH = 100
 
 USE_EPSILON_DECAY = True
 epsilon = 0.5
 START_EPSILON_DECAYING = 1
 END_EPSILON_DECAYING = EPISODES // 2
+
+model_name = f'LR: {lr} - DISCOUNT: {DISCOUNT} -' \
+            f' EPISODES: {EPISODES} - Use epsilon Decay: {USE_EPSILON_DECAY} -' \
+            f' EPSILON: {epsilon}'
 
 epsilon_decaying_value = epsilon // (END_EPSILON_DECAYING - START_EPSILON_DECAYING)
 
@@ -49,10 +54,9 @@ def get_discrete_state(state):
 
 if __name__ == '__main__':
     """
-    Clear the q-table directory history.
+    Creates new directory in ./q_tables/
     """
-    shutil.rmtree('./q_tables')
-    os.mkdir('./q_tables')
+    os.mkdir(f'./q_tables/{model_name}')
 
     """
     Initializing the Q_Table, A 20 by 20 matrix with depth of env.action_space.n (In this case 3)
@@ -75,12 +79,8 @@ if __name__ == '__main__':
     Iterating over EPISODES to optimize the Q_table by using 'Bellman equation'
     as a simple value iteration update.
     """
-    for episode in range(EPISODES):
+    for episode in range(1, EPISODES + 1):
         episode_reward = 0
-        if episode % SHOW_EVERY == 0:
-            render = True
-        else:
-            render = False
 
         discrete_state = get_discrete_state(env.reset())
 
@@ -91,13 +91,13 @@ if __name__ == '__main__':
             new_state, reward, done, _ = env.step(action)
             episode_reward += reward
             new_discrete_state = get_discrete_state(new_state)
-            if render:
+
+            if episode % SHOW_EVERY == 0:
                 """
                 # TODO: Uncomment below to capture frames.
                 """
                 # frames.append(env.render(mode="rgb_array"))
                 env.render()
-
                 """Feel free to change the sleep time if the car is too slow or too fast for you."""
                 time.sleep(0.02)
 
@@ -119,10 +119,10 @@ if __name__ == '__main__':
         Capturing the episode's activity for further tracking and model selection.
         """
         ep_rewards.append(episode_reward)
-        if not episode % SHOW_EVERY:
-            average_reward = sum(ep_rewards[-SHOW_EVERY:]) / len(ep_rewards[-SHOW_EVERY:])
-            min_reward = min(ep_rewards[-SHOW_EVERY:])
-            max_reward = max(ep_rewards[-SHOW_EVERY:])
+        if not episode % STATS_EVERY:
+            average_reward = sum(ep_rewards[-STATS_EVERY:]) / STATS_EVERY
+            min_reward = min(ep_rewards[-STATS_EVERY:])
+            max_reward = max(ep_rewards[-STATS_EVERY:])
 
             aggr_ep_rewards['ep'].append(episode)
             aggr_ep_rewards['avg'].append(average_reward)
@@ -134,8 +134,8 @@ if __name__ == '__main__':
         """
         Saving Q-Tables for each SHOW_EVERY
         """
-        if episode % SAVE_MODEL_EACH:
-            np.save(f'./q_tables/{episode}-qtable.npy', q_table)
+        if episode % SAVE_MODEL_EACH == 0:
+            np.save(f'./q_tables/{model_name}/{episode}-qtable.npy', q_table)
     """
     Uncomment to save the frames as gif.
     """
@@ -145,11 +145,7 @@ if __name__ == '__main__':
     """
     Let's plot the captured episodic activities.
     """
-    plt_path = f'./plots/LR: {lr} - DISCOUNT: {DISCOUNT} -' \
-               f' EPISODES: {EPISODES} - Use epsilon Decay: {USE_EPSILON_DECAY} -' \
-               f' EPSILON: {epsilon}.png'
-    if os.path.exists(plt_path):
-        plt_path.split('.')[0] += '_NEW'
+    plt_path = f'{model_name}.png'
 
     plt.plot(aggr_ep_rewards.get('ep'), aggr_ep_rewards.get('avg'), label="avg rewards")
     plt.plot(aggr_ep_rewards.get('ep'), aggr_ep_rewards.get('min'), label="min rewards")
