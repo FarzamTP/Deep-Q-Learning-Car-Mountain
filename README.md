@@ -6,6 +6,9 @@ Here we use the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equatio
 
 ![Bellman equation](./images/Bellman-Equation.svg)
 
+![initial q_table status](./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+Initial Q table status
+
 #### Result (Phase one)
 ##### Not Using Epsilon Decay
 ![phase one gif](./gifs/phase_one.gif)

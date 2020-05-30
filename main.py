@@ -1,4 +1,5 @@
 import gym
+from graph import Graph
 from matplotlib import animation
 import matplotlib.pyplot as plt
 import numpy as np
@@ -29,11 +30,10 @@ env = gym.make("MountainCar-v0")
 
 lr = 0.1
 DISCOUNT = 0.95
-EPISODES = 2000
+EPISODES = 1000
 
-STATS_EVERY = 100
-SHOW_EVERY = 1000
-SAVE_MODEL_EACH = 100
+STATS_EVERY = 50
+SHOW_EVERY = 500
 
 USE_EPSILON_DECAY = True
 epsilon = 0.5
@@ -136,7 +136,7 @@ if __name__ == '__main__':
         """
         Saving Q-Tables for each SHOW_EVERY
         """
-        if episode % SAVE_MODEL_EACH == 0:
+        if episode % STATS_EVERY == 0:
             np.save(f'./q_tables/{model_name}/{episode}-qtable.npy', q_table)
     """
     Uncomment to save the frames as gif.
@@ -166,3 +166,6 @@ if __name__ == '__main__':
     plt.ylabel('Reward')
     plt.savefig(plt_path)
     plt.show()
+
+    graph = Graph(q_table=q_table, save_plot_path=f'./graphs/{model_name}.png', save_plot=True)
+    graph.plot()
