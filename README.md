@@ -7,11 +7,10 @@ Here we use the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equatio
 ![Bellman equation](./images/Bellman-Equation.svg)
 
 ![initial q_table status](./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
-Initial Q table status
+
+* As you see in the image, you see that the distribution of Q table values are so vide that cannot be used in order to make a decision. But by taking a brief look at the below graph, shows that the final Q-table values are in a particular distribution that can be used to make a decision.
 
 ![final q table status](./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
-Final Status
-
 
 #### Result (Phase one)
 ##### Not Using Epsilon Decay
@@ -29,15 +28,12 @@ Although the car reaches the peak in a quite acceptable time, by using epsilon d
 And as it's shown in above gif, the car minimizes it's spent time to reach the peak.
 
 ![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0.5.png](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%204000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
-
 LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0.5
-
 
 ![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5.png](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2010000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 
-LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5
-
-
+#### Final Result
+* This is the final result gained by training the model for 60000 EPISODES:
 ![Final gif](./gifs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.gif)
 
 ### How to use:
