@@ -34,9 +34,6 @@ And as it's shown in above gif, the car minimizes it's spent time to reach the p
 ![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 2000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 
 
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%204000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
-
-
 ![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 5000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%205000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 
 
@@ -54,6 +51,7 @@ And as it's shown in above gif, the car minimizes it's spent time to reach the p
 
 #### Final Result
 * This is the final result gained by training the model for 60000 EPISODES:
+
 ![Final gif](./gifs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.gif)
 
 ### How to use:
