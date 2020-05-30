@@ -27,13 +27,22 @@ But there is an interesting point there:
 Although the car reaches the peak in a quite acceptable time, by using epsilon decay we make model to ***explore*** more in order to find a better approach!
 And as it's shown in above gif, the car minimizes it's spent time to reach the peak.
 
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0.5.png](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%204000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 1000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.05%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.7.png)
 
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 2000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5.png](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2010000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%204000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 5000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%205000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 
-![]
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2010000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 15000 - Use epsilon Decay: True - EPSILON: 1](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2015000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%201.png)
+
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 40000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2040000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+
+![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 50000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2050000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+
 #### Final Result
 * This is the final result gained by training the model for 60000 EPISODES:
 ![Final gif](./gifs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.gif)
