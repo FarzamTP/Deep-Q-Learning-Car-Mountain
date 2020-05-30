@@ -28,10 +28,12 @@ Although the car reaches the peak in a quite acceptable time, by using epsilon d
 And as it's shown in above gif, the car minimizes it's spent time to reach the peak.
 
 ![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0.5.png](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%204000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
-LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 4000 - Use epsilon Decay: True - EPSILON: 0.5
+
 
 ![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5.png](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2010000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
 
+
+![]
 #### Final Result
 * This is the final result gained by training the model for 60000 EPISODES:
 ![Final gif](./gifs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.gif)
