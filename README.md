@@ -116,7 +116,7 @@ And as it's shown in above gif, the car minimizes it's spent time to reach the p
 ### How to use:
 First clone the repository:
 ```shell script
-$ git clone https://github.com/FarzamTP/Deep-Q-Learning-Car-Mountain.git
+$ git clone https://github.com/FarzamTP/Q-Learning-Mountain-Car.git
 $ cd Deep-Q-Learning-Car-Mountain
 ```
 To setup the `virtual environment` and `activating` it:
