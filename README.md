@@ -5,7 +5,7 @@
 Here is an screenshot of the initial environment.
 <p align='center'>
   <img src='./images/initial_state.png' alt='initial_state_of_car'>
-  <p>Initial State of The Environment</p>
+  <p align='center'>Initial State of The Environment</p>
 </p>
 
 In this project, aim is to implement a Q-Learning algorithm in the first phase, and also develope a deep Q-Learning algorithm using `Keras`.
