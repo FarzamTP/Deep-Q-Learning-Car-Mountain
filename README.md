@@ -20,20 +20,19 @@ Here we use the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equatio
   <img src='./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='Initial Q-Table'>
 </p>
 
-As it can be understood from the above scatter graph, the green dots represent the action taken by the agent in the previous action. In the plot, the agent chooses a action which is almost random.
-But after some iterations through episodes, the agent learns that taking specific actions is specific locations, leads it to a receive a reward!
-When the agent understands the solution, It keeps exploiting it. Ofcourse it can lead the model to gain reward constantly, But the model doesn't know that it can gain more reward by taking different actions, which is known as exploration.
-This the one of the foundamental problems of reinforcement learning, known as ***Exploration Explotation Dilemma***.
-
-
 <p align='center'>
   <img src='./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='Final Q-Table'>
 </p>
 
+As it can be understood from the first scatter graph, the green dots represent the action taken by the agent in the previous action. In the plot, the agent chooses a action which is almost random.
+But after some iterations through episodes, the agent learns that taking specific actions is specific locations, leads it to a receive a reward!
+When the agent understands the solution, It keeps exploiting it. Ofcourse it can lead the model to gain reward constantly, But the model doesn't know that it can gain more reward by taking different actions, which is known as exploration.
+This the one of the foundamental problems of reinforcement learning, known as ***Exploration Explotation Dilemma***.
+
 #### Result (Phase one)
 ##### Not Using Epsilon Decay
 <p align='center'>
-  ![phase one gif](./gifs/phase_one.gif)
+  <img src='./gifs/phase_one.gif' alt='Not trained gif'>
 </p>
 
 As it's obvious, the car at episode 1, has no idea what to do. But after only 500 episodes 
@@ -44,39 +43,75 @@ But there is an interesting point there:
 ##### Using Epsilon Decay
 
 <p align='center'>
-  ![phase one gif](./gifs/phase_one_epsilon_decay.gif)
+  <img src='./gifs/phase_one_epsilon_decay.gif' alt='trained gif'>
 </p>
 
 
 Although the car reaches the peak in a quite acceptable time, by using epsilon decay we make model to ***explore*** more in order to find a better approach!
 And as it's shown in above gif, the car minimizes it's spent time to reach the peak.
 
-
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 1000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.05%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.7.png)
-
-
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 2000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
-
-
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 5000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%205000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+<p align='center'>
+  <img src='./plots/LR:%200.05%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.7.png' alt='trained gif'>
+  <p align='center'>
+    LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 1000 - Use epsilon Decay: True - EPSILON: 0.5
+  </p>
+</p>
 
 
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2010000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+<p align='center'>
+  <img src='./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='trained gif'>
+  <p align='center'>
+    LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 2000 - Use epsilon Decay: True - EPSILON: 0.5
+  </p>
+</p>
 
 
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 15000 - Use epsilon Decay: True - EPSILON: 1](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2015000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%201.png)
+<p align='center'>
+  <img src='./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%205000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='trained gif'>
+  <p align='center'>
+    LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 5000 - Use epsilon Decay: True - EPSILON: 0.5
+  </p>
+</p>
 
 
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 40000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2040000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+<p align='center'>
+  <img src='./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2010000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='trained gif'>
+  <p align='center'>
+    LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 10000 - Use epsilon Decay: True - EPSILON: 0.5
+  </p>
+</p>
+
+<p align='center'>
+  <img src='./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2015000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%201.png' alt='trained gif'>
+  <p align='center'>
+    LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 15000 - Use epsilon Decay: True - EPSILON: 1
+  </p>
+</p>
 
 
-![LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 50000 - Use epsilon Decay: True - EPSILON: 0.5](./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2050000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png)
+<p align='center'>
+  <img src='./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2040000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='trained gif'>
+  <p align='center'>
+    LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 40000 - Use epsilon Decay: True - EPSILON: 0.5
+  </p>
+</p>
 
+<p align='center'>
+  <img src='./plots/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2050000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='trained gif'>
+  <p align='center'>
+    LR: 0.1 - DISCOUNT: 0.95 - EPISODES: 50000 - Use epsilon Decay: True - EPSILON: 0.5
+  </p>
+</p>
 
 #### Final Result
 * This is the final result gained by training the model for 60000 EPISODES:
 
-![Final gif](./gifs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.gif)
+<p align='center'>
+  <img src='./gifs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.gif'>
+  <p align='center'>
+    Final Trained Model After 60000 Episodes
+  </p>
+</p>
 
 ### How to use:
 First clone the repository:
