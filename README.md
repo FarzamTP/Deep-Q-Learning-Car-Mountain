@@ -18,10 +18,16 @@ Here we use the [Bellman equation](https://en.wikipedia.org/wiki/Bellman_equatio
 
 <p align='center'>
   <img src='./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%201000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='Initial Q-Table'>
+  <p align='center'>
+    Scatter Plot of The Q-Table at 1000 Episodes of Training
+  </p>
 </p>
 
 <p align='center'>
   <img src='./graphs/LR:%200.1%20-%20DISCOUNT:%200.95%20-%20EPISODES:%2060000%20-%20Use%20epsilon%20Decay:%20True%20-%20EPSILON:%200.5.png' alt='Final Q-Table'>
+  <p align='center'>
+    Scatter Plot of The Q-Table at 60000 Episodes of Training
+  </p>
 </p>
 
 As it can be understood from the first scatter graph, the green dots represent the action taken by the agent in the previous action. In the plot, the agent chooses a action which is almost random.
