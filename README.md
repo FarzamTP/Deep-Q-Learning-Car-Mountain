@@ -1,4 +1,5 @@
-# Q-Learning
+# Q-Learning 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Problem
 `MountainCar-v0` is a `Gym` environment that provides us a simple environment that can take action as input and by using `step()` method, returns a new state, reward and whether the goal is reached or not.
